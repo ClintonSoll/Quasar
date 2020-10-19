@@ -1,5 +1,4 @@
 ﻿using Quasar.Client.Config;
-using Quasar.Client.Logging;
 using Quasar.Client.Messages;
 using Quasar.Client.Networking;
 using Quasar.Client.Setup;
@@ -37,11 +36,6 @@ namespace Quasar.Client
         /// List of <see cref="IMessageProcessor"/> to keep track of all used message processors.
         /// </summary>
         private readonly List<IMessageProcessor> _messageProcessors;
-        
-        /// <summary>
-        /// The background keylogger service used to capture and store keystrokes.
-        /// </summary>
-        private KeyloggerService _keyloggerService;
 
         /// <summary>
         /// Keeps track of the user activity.
@@ -146,12 +140,6 @@ namespace Quasar.Client
                 if (!Settings.UNATTENDEDMODE)
                     InitializeNotifyicon();
 
-                if (Settings.ENABLELOGGER)
-                {
-                    _keyloggerService = new KeyloggerService();
-                    _keyloggerService.Start();
-                }
-
                 var hosts = new HostsManager(new HostsConverter().RawHostsToList(Settings.HOSTS));
                 _connectClient = new QuasarClient(hosts, Settings.SERVERCERTIFICATE);
                 _connectClient.ClientState += ConnectClientOnClientState;
@@ -187,9 +175,7 @@ namespace Quasar.Client
         {
             _messageProcessors.Add(new ClientServicesHandler(this, client));
             _messageProcessors.Add(new FileManagerHandler(client));
-            _messageProcessors.Add(new KeyloggerHandler());
             _messageProcessors.Add(new MessageBoxHandler());
-            _messageProcessors.Add(new PasswordRecoveryHandler());
             _messageProcessors.Add(new RegistryHandler());
             _messageProcessors.Add(new RemoteDesktopHandler());
             _messageProcessors.Add(new RemoteShellHandler(client));
@@ -237,7 +223,6 @@ namespace Quasar.Client
             if (disposing)
             {
                 CleanupMessageProcessors();
-                _keyloggerService?.Dispose();
                 _userActivityDetection?.Dispose();
                 ApplicationMutex?.Dispose();
                 _connectClient?.Dispose();
