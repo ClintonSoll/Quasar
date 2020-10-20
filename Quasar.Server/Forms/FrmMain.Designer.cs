@@ -267,22 +267,6 @@ namespace Quasar.Server.Forms
             this.surveillanceToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.surveillanceToolStripMenuItem.Text = "Monitoring";
             // 
-            // passwordRecoveryToolStripMenuItem
-            // 
-            this.passwordRecoveryToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("passwordRecoveryToolStripMenuItem.Image")));
-            this.passwordRecoveryToolStripMenuItem.Name = "passwordRecoveryToolStripMenuItem";
-            this.passwordRecoveryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.passwordRecoveryToolStripMenuItem.Text = "Password Recovery";
-            this.passwordRecoveryToolStripMenuItem.Click += new System.EventHandler(this.passwordRecoveryToolStripMenuItem_Click);
-            // 
-            // keyloggerToolStripMenuItem
-            // 
-            this.keyloggerToolStripMenuItem.Image = global::Quasar.Server.Properties.Resources.keyboard_magnify;
-            this.keyloggerToolStripMenuItem.Name = "keyloggerToolStripMenuItem";
-            this.keyloggerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.keyloggerToolStripMenuItem.Text = "Keylogger";
-            this.keyloggerToolStripMenuItem.Click += new System.EventHandler(this.keyloggerToolStripMenuItem_Click);
-            // 
             // remoteDesktopToolStripMenuItem2
             // 
             this.remoteDesktopToolStripMenuItem2.Image = ((System.Drawing.Image)(resources.GetObject("remoteDesktopToolStripMenuItem2.Image")));

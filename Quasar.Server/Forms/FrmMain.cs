@@ -648,26 +648,6 @@ namespace Quasar.Server.Forms
             }
         }
 
-        private void passwordRecoveryToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Client[] clients = GetSelectedClients();
-            if (clients.Length > 0)
-            {
-                FrmPasswordRecovery frmPass = new FrmPasswordRecovery(clients);
-                frmPass.Show();
-            }
-        }
-
-        private void keyloggerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            foreach (Client c in GetSelectedClients())
-            {
-                FrmKeylogger frmKl = FrmKeylogger.CreateNewOrGetExisting(c);
-                frmKl.Show();
-                frmKl.Focus();
-            }
-        }
-
         #endregion
 
         #region "User Support"
